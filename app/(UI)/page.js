@@ -2,18 +2,13 @@
 import NoteCard from "@/components/NoteCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import NoteForm from "@/components/NoteForm";
+
 export default function Home() {
   const [notes, setNotes] = useState([]);
   const [message, setMessage] = useState("");
   const [adding, setAdding] = useState(false);
   const [newNote, setNewNote] = useState({ title: "", text: "" });
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setMessage("");
-    setNewNote((prev) => ({ ...prev, [name]: value }));
-  };
-
   useEffect(() => {
     const FetchNotes = async () => {
       try {
@@ -38,15 +33,23 @@ export default function Home() {
 
   const addNote = async (event) => {
     event.preventDefault();
+    const isEmpty = Object.values(newNote).some((n) => n.trim() === "");
+    if (isEmpty) {
+      setMessage("You can't add empty fields");
+      return;
+    }
     try {
       const note = await axios.post("/api/create", newNote);
       const newNoteOnline = note.data.data;
       setMessage("Note added successfully");
+      setNewNote({ title: "", text: "" });
       setNotes((prev) => [...prev, newNoteOnline]);
+      setAdding(false);
     } catch (error) {
       setMessage(error.message);
     }
   };
+
   return (
     <div className="flex flex-col min-h-screen items-center justify-center">
       <h1 className="text-center text-red-800 text-xl font-bold animate-ping">
@@ -54,40 +57,28 @@ export default function Home() {
       </h1>
       <button
         onClick={() => setAdding(true)}
-        className="bg-green-800 cursor-pointer text-white font-bold px-6 py-1 rounded-md hover:bg-green-600 hover:shadow-lg"
+        className="bg-green-800 mb-3 cursor-pointer text-white font-bold px-6 py-1 rounded-md hover:bg-green-600 hover:shadow-lg"
       >
         ADD NOTE
       </button>
       {adding && (
-        <form onSubmit={addNote} className="flex flex-col justify-around">
-          <input
-            type="text"
-            name="title"
-            placeholder="Enter Note title"
-            value={newNote.title}
-            onChange={handleChange}
-            className="border border-white"
-          />
-          <textarea
-            type="text"
-            name="text"
-            placeholder="Enter your notes here"
-            value={newNote.text}
-            onChange={handleChange}
-            className="border border-white"
-          />
-          <button type="submit">Add</button>
-        </form>
+        <NoteForm
+          addNote={addNote}
+          setMessage={setMessage}
+          newNote={newNote}
+          setNewNote={setNewNote}
+        />
       )}
-      <div className="flex gap-4 p-3">
-        {notes.map((note) => (
-          <NoteCard
-            key={note._id}
-            title={note.title}
-            text={note.text}
-            btnDelete={() => btnDelete(note._id)}
-          />
-        ))}
+      <div className="grid grid-cols-3 gap-3">
+        {!adding &&
+          notes.map((note) => (
+            <NoteCard
+              key={note._id}
+              title={note.title}
+              text={note.text}
+              btnDelete={() => btnDelete(note._id)}
+            />
+          ))}
       </div>
     </div>
   );
