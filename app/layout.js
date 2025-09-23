@@ -1,3 +1,4 @@
+import SideBar from "@/components/SideBar";
 import "./globals.css";
 
 export const metadata = {
@@ -8,7 +9,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="flex">
+        <SideBar />
+        <div className="ml-2 mt-1 bg-radial from-green-300 via-yellow-200 to-blue-300 min-w-[85%] rounded-md">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

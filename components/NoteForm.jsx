@@ -7,7 +7,7 @@ const NoteForm = ({ addNote, newNote, setNewNote, setMessage }) => {
   return (
     <form
       onSubmit={addNote}
-      className="flex flex-col justify-center w-102 min-h-screen p-5"
+      className="flex flex-col justify-center w-122 min-h-screen p-1"
     >
       <label htmlFor="title" className="font-bold text-xl text-blue-800">
         Enter Note Title
@@ -31,7 +31,7 @@ const NoteForm = ({ addNote, newNote, setNewNote, setMessage }) => {
         placeholder="Enter your notes here"
         value={newNote.text}
         onChange={handleChange}
-        className="border border-white h-full flex-1 p-2 font-bold bg-amber-600"
+        className="border border-white h-70 p-2 font-bold bg-amber-600"
       />
       <button
         type="submit"

@@ -1,17 +1,9 @@
 import React from "react";
 
-const NoteCard = ({ id, title, text, handleEditing, btnDelete, onClose }) => {
+const NoteCard = ({ id, title, text, handleEditing, btnDelete }) => {
   return (
     <div className="flex flex-col w-80">
-      <div className="relative bg-red-900">
-        <button
-          className="absolute top-1 right-3 text-black bg-red-800 cursor-pointer font-bold px-3 py-1 rounded-md hover:bg-red-600 hover:shadow-lg"
-          onClick={onClose}
-        >
-          Close
-        </button>
-      </div>
-      <div className="flex flex-col pt-10 w-78 h-78 p-1  bg-amber-100 text-black rounded-md shadow-lg">
+      <div className="flex flex-col w-78 h-78 p-1  bg-amber-100 text-black rounded-md shadow-lg">
         <h1 className="text-center text-2xl bg-green-400 rounded-md p-1">
           {title}
         </h1>
