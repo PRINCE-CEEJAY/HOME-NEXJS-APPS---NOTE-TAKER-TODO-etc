@@ -1,6 +1,6 @@
 import React from "react";
 
-const NoteCard = ({ title, text, btnEdit, btnDelete, onClose }) => {
+const NoteCard = ({ id, title, text, handleEditing, btnDelete, onClose }) => {
   return (
     <div className="flex flex-col w-80">
       <div className="relative bg-red-900">
@@ -20,7 +20,7 @@ const NoteCard = ({ title, text, btnEdit, btnDelete, onClose }) => {
         </p>
         <div className="flex justify-around p-2 bg-gradient-to-bl from-yellow-400 via-red-300 to-blue-500">
           <button
-            onClick={btnEdit}
+            onClick={() => handleEditing(id)}
             className="bg-green-800 cursor-pointer text-white font-bold px-6 py-1 rounded-md hover:bg-green-600 hover:shadow-lg"
           >
             Edit

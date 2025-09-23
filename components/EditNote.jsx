@@ -1,12 +1,14 @@
-const NoteForm = ({ addNote, newNote, setNewNote, setMessage }) => {
+import React from "react";
+
+const EditNote = ({ update, setUpdate, setMessage, btnUpdate }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setMessage("");
-    setNewNote((prev) => ({ ...prev, [name]: value }));
+    setUpdate((prev) => ({ ...prev, [name]: value }));
   };
   return (
     <form
-      onSubmit={addNote}
+      onSubmit={(e) => btnUpdate(e, update._id)}
       className="flex flex-col justify-center w-102 min-h-screen p-5"
     >
       <label htmlFor="title" className="font-bold text-xl text-blue-800">
@@ -17,7 +19,7 @@ const NoteForm = ({ addNote, newNote, setNewNote, setMessage }) => {
         type="text"
         name="title"
         placeholder="Enter Note title"
-        value={newNote.title}
+        value={update.title}
         onChange={handleChange}
         className="border border-white p-2 font-bold mt-2"
       />
@@ -29,7 +31,7 @@ const NoteForm = ({ addNote, newNote, setNewNote, setMessage }) => {
         type="text"
         name="text"
         placeholder="Enter your notes here"
-        value={newNote.text}
+        value={update.text}
         onChange={handleChange}
         className="border border-white h-full flex-1 p-2 font-bold bg-amber-600"
       />
@@ -37,10 +39,10 @@ const NoteForm = ({ addNote, newNote, setNewNote, setMessage }) => {
         type="submit"
         className="bg-green-800 cursor-pointer text-white font-extrabold text-xl px-6 py-3 rounded-md hover:bg-green-600 hover:shadow-lg mt-2"
       >
-        Add
+        Update Note
       </button>
     </form>
   );
 };
 
-export default NoteForm;
+export default EditNote;

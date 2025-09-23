@@ -3,6 +3,7 @@ import { NoteC } from "@/models/NoteCollection";
 
 export async function PUT(request, { params }) {
   const userData = await request.json();
+  console.log(userData);
   const { id } = await params;
   try {
     CONNECTDB();
@@ -11,7 +12,9 @@ export async function PUT(request, { params }) {
     });
     if (!updatedNote) {
       return Response.json(
-        { message: `Note with the ID: ${id} does not exist` },
+        {
+          message: `Note with the ID: ${id} does not exist`,
+        },
         { status: 404 }
       );
     }
