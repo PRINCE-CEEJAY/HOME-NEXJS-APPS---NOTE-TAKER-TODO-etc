@@ -13,6 +13,9 @@ const SideBar = () => {
       <Link href="/counter">
         <button>Counter</button>{" "}
       </Link>
+      <Link href="/todo">
+        <button>Todo</button>{" "}
+      </Link>
       <Link href="/about">
         <button>About</button>{" "}
       </Link>
