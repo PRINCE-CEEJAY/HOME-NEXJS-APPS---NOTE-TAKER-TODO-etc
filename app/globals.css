@@ -24,10 +24,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 } */
-button:hover {
-  font-size: 1.1rem;
-  font-weight: bolder;
-}
+/* 
 button:hover {
   color: blue;
   background-color: white;
@@ -37,4 +34,4 @@ button:hover {
   border-radius: 5px;
   text-shadow: 1px 1px green;
   box-shadow: rgba(15, 0, 0, 0.5);
-}
+} */
