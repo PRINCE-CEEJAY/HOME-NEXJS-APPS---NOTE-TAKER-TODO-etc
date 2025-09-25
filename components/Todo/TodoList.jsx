@@ -3,10 +3,9 @@ import React, { useState } from "react";
 import TodoItem from "./TodoItem";
 import Input from "./Input";
 
-const TodoList = () => {
+const TodoList = ({ items, setItems }) => {
   const [input, setInput] = useState("");
   const [select, setSelect] = useState("");
-  const [items, setItems] = useState([]);
   const [error, setError] = useState("");
 
   const handleDelete = (id) => {
@@ -21,6 +20,20 @@ const TodoList = () => {
       itemNum: select,
       completed: false,
     };
+    if (!newTodo.description) {
+      setError("you must input a todo");
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+      return;
+    }
+    if (newTodo.description.length < 5) {
+      setError("Todo is too short");
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+      return;
+    }
     const existed = items.find(
       (item) =>
         item.description === newTodo.description &&
@@ -34,6 +47,7 @@ const TodoList = () => {
       return;
     } else {
       setItems((prev) => [...prev, newTodo]);
+      setInput("");
     }
   };
 
