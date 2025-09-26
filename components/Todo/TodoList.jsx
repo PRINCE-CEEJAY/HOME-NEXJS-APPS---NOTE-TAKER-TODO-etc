@@ -6,6 +6,8 @@ import Input from "./Input";
 const TodoList = ({ items, setItems }) => {
   const [input, setInput] = useState("");
   const [select, setSelect] = useState("");
+  const [editingId, setEditingId] = useState(null);
+  const [updated, setUpdated] = useState("");
   const [error, setError] = useState("");
 
   const handleDelete = (id) => {
@@ -58,6 +60,23 @@ const TodoList = ({ items, setItems }) => {
       )
     );
   };
+  const handleEditing = (item) => {
+    setEditingId(item.id);
+    setUpdated(item.description);
+  };
+  const handleUpdate = (item) => {
+    setEditingId(null);
+    setItems((prev) =>
+      prev.map((edit) =>
+        edit.id === item.id
+          ? {
+              ...edit,
+              description: !updated.trim() ? edit.description : updated,
+            }
+          : edit
+      )
+    );
+  };
 
   return (
     <>
@@ -71,7 +90,7 @@ const TodoList = ({ items, setItems }) => {
         setInput={setInput}
         handleSubmit={handleAdd}
       />
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-3 space-x-12">
         {items.map((item) => (
           <TodoItem
             key={item.id}
@@ -79,6 +98,11 @@ const TodoList = ({ items, setItems }) => {
             selected={item.itemNum}
             onDelete={() => handleDelete(item.id)}
             toggleCompleted={() => toggleCompleted(item.id)}
+            onEdit={() => handleEditing(item)}
+            handleUpdate={() => handleUpdate(item)}
+            editingId={editingId}
+            updated={updated}
+            setUpdated={(e) => setUpdated(e.target.value)}
           />
         ))}
       </div>
