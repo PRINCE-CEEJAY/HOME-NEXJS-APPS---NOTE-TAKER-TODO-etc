@@ -1,8 +1,11 @@
 import React from "react";
-import Home from "./home/page";
 
 const page = () => {
-  return <Home />;
+  return (
+    <div className="flex flex-col justify-center items-center min-h-screen">
+      <h1>Home page</h1>
+    </div>
+  );
 };
 
 export default page;

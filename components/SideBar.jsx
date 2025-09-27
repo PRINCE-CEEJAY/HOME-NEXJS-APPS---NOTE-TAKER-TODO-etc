@@ -3,24 +3,32 @@ import React from "react";
 
 const SideBar = () => {
   return (
-    <div className="flex flex-col items-center gap-20 pt-8 rounded-md w-[15%] min-h-screen bg-green-400 text-white text-bold text-2xl">
-      <Link href="/home">
-        <button>Project</button>{" "}
-      </Link>
-      <Link href="/forum">
-        <button>FORUM</button>{" "}
-      </Link>
-      <Link href="/counter">
-        <button>Counter</button>{" "}
+    <div className="flex flex-col items-center justify-evenly rounded-md w-[15%] h-screen bg-green-400 text-white text-bold text-2xl">
+      <Link href="/note">
+        <button className="hover:cursor-pointer hover:opacity-80">
+          NOTE APP
+        </button>{" "}
       </Link>
       <Link href="/todo">
-        <button>Todo</button>{" "}
+        <button className="hover:cursor-pointer hover:opacity-80">
+          ADVANCED TODO
+        </button>{" "}
+      </Link>
+      <Link href="/counter">
+        <button className="hover:cursor-pointer hover:opacity-80">
+          COUNTER
+        </button>{" "}
+      </Link>
+      <Link href="/forum">
+        <button className="hover:cursor-pointer hover:opacity-80">FORUM</button>{" "}
       </Link>
       <Link href="/about">
-        <button>About</button>{" "}
+        <button className="hover:cursor-pointer hover:opacity-80">ABOUT</button>{" "}
       </Link>
       <Link href="/FAQ">
-        <button>FAQ Section</button>{" "}
+        <button className="hover:cursor-pointer hover:opacity-80">
+          FAQ SECTION
+        </button>{" "}
       </Link>
     </div>
   );

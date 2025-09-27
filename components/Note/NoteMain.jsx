@@ -1,10 +1,9 @@
 "use client";
-import NoteCard from "@/components/NoteCard";
+import NoteCard from "./NoteCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import NoteForm from "@/components/NoteForm";
-import EditNote from "@/components/EditNote";
-
+import NoteForm from "./NoteForm";
+import EditNote from "./EditNote";
 export default function Home() {
   const [notes, setNotes] = useState([]);
   const [message, setMessage] = useState("");
