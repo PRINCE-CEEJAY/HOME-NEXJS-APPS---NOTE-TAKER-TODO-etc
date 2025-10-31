@@ -1,34 +1,37 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
+import React from 'react';
 
 const SideBar = () => {
   return (
-    <div className="flex flex-col items-center justify-evenly rounded-md w-[15%] h-screen bg-green-400 text-white text-bold text-2xl">
-      <Link href="/note">
-        <button className="hover:cursor-pointer hover:opacity-80">
+    <div className='flex flex-col items-center justify-evenly rounded-md w-[15%] min-h-screen bg-green-400 text-white text-bold text-2xl'>
+      <Link href='/note'>
+        <button className='hover:cursor-pointer hover:opacity-80'>
           NOTE APP
-        </button>{" "}
+        </button>{' '}
       </Link>
-      <Link href="/todo">
-        <button className="hover:cursor-pointer hover:opacity-80">
+      <Link href='/todo'>
+        <button className='hover:cursor-pointer hover:opacity-80'>
           ADVANCED TODO
-        </button>{" "}
+        </button>{' '}
       </Link>
-      <Link href="/counter">
-        <button className="hover:cursor-pointer hover:opacity-80">
+      <Link href='/quiz'>
+        <button className='hover:cursor-pointer hover:opacity-80'>Quiz</button>{' '}
+      </Link>
+      <Link href='/counter'>
+        <button className='hover:cursor-pointer hover:opacity-80'>
           COUNTER
-        </button>{" "}
+        </button>{' '}
       </Link>
-      <Link href="/forum">
-        <button className="hover:cursor-pointer hover:opacity-80">FORUM</button>{" "}
+      <Link href='/forum'>
+        <button className='hover:cursor-pointer hover:opacity-80'>FORUM</button>{' '}
       </Link>
-      <Link href="/about">
-        <button className="hover:cursor-pointer hover:opacity-80">ABOUT</button>{" "}
+      <Link href='/about'>
+        <button className='hover:cursor-pointer hover:opacity-80'>ABOUT</button>{' '}
       </Link>
-      <Link href="/FAQ">
-        <button className="hover:cursor-pointer hover:opacity-80">
+      <Link href='/FAQ'>
+        <button className='hover:cursor-pointer hover:opacity-80'>
           FAQ SECTION
-        </button>{" "}
+        </button>{' '}
       </Link>
     </div>
   );
